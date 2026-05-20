@@ -47,26 +47,23 @@
         </div>
     </section>
 
-    <script>
-        const feedUrl = 'https://bountiful-test.blogspot.com/feeds/posts/default?alt=json';
+<script>
+        // 1. We create a function to handle the data once it arrives
+        function handleBloggerPosts(data) {
+            const container = document.getElementById('blog-container');
+            const posts = data.feed.entry;
+            
+            container.innerHTML = ''; // Clear loading text
 
-        async function fetchBloggerPosts() {
+            if (!posts || posts.length === 0) {
+                container.innerHTML = '<p style="text-align:center;">No posts found yet!</p>';
+                return;
+            }
+
             try {
-                const response = await fetch(feedUrl);
-                const data = await response.json();
-                const posts = data.feed.entry;
-                const container = document.getElementById('blog-container');
-                
-                container.innerHTML = ''; 
-
-                if (!posts || posts.length === 0) {
-                    container.innerHTML = '<p style="text-align:center;">No posts found yet!</p>';
-                    return;
-                }
-
                 posts.forEach(post => {
                     const title = post.title.$t;
-                    const content = post.content ? post.content.$t : post.summary.$t; 
+                    const content = post.content ? post.content.$t : (post.summary ? post.summary.$t : ''); 
                     const publishDate = new Date(post.published.$t).toLocaleDateString('en-US', {
                         year: 'numeric', month: 'long', day: 'numeric'
                     });
@@ -83,13 +80,13 @@
                     
                     container.insertAdjacentHTML('beforeend', postHTML);
                 });
-
             } catch (error) {
-                console.error('Error fetching blog posts:', error);
-                document.getElementById('blog-container').innerHTML = '<p style="text-align:center; color: red;">Failed to load the blog posts. Please try again later.</p>';
+                console.error("Error parsing posts:", error);
+                container.innerHTML = '<p style="text-align:center; color: red;">Error displaying posts.</p>';
             }
         }
-        fetchBloggerPosts();
     </script>
+    
+    <script src="https://bountiful-test.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBloggerPosts"></script>
 </body>
 </html>
