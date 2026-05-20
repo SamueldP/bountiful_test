@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Blog | Bountiful Blossoming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #fafafa; }
+        .hero { position: relative; height: 60vh; background-size: cover; background-position: center; } /* Slightly shorter hero for interior pages */
+        nav { position: absolute; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; box-sizing: border-box; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%); }
+        .logo { color: white; font-size: 1.5rem; font-weight: 600; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.7; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: #222; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; padding: 10px 0; }
+        .dropdown-content a { color: white; padding: 12px 20px; text-decoration: none; display: block; text-align: left; }
+        .dropdown-content a:hover { background-color: #444; }
+        .dropdown:hover .dropdown-content { display: block; }
+    </style>
+</head>
+<body>
+    <div class="hero" style="background-image: url('{health_blog_image}');">
+        <nav>
+            <div class="logo">Bountiful Blossoming</div>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="testimony.html">MY TESTIMONY</a>
+                <a href="blog.html">HEALTH BLOG</a>
+                <div class="dropdown">
+                    <a href="#">RESOURCES ⌄</a>
+                    <div class="dropdown-content">
+                        <a href="recipes.html">RECIPES</a>
+                        <a href="aim.html">AIM</a>
+                        <a href="https://www.youtube.com/" target="_blank">YOUTUBE</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <section id="blog-section" style="padding: 60px 20px; max-width: 900px; margin: 0 auto;">
+        <h2 style="text-align: center; color: #053359; font-size: 2rem; margin-bottom: 40px;">Health Blog</h2>
+        <div id="blog-container">
+            <p style="text-align: center; color: #6789B0;">Loading latest posts...</p>
+        </div>
+    </section>
+
+    <script>
+        const feedUrl = 'https://bountiful-test.blogspot.com/feeds/posts/default?alt=json';
+
+        async function fetchBloggerPosts() {
+            try {
+                const response = await fetch(feedUrl);
+                const data = await response.json();
+                const posts = data.feed.entry;
+                const container = document.getElementById('blog-container');
+                
+                container.innerHTML = ''; 
+
+                if (!posts || posts.length === 0) {
+                    container.innerHTML = '<p style="text-align:center;">No posts found yet!</p>';
+                    return;
+                }
+
+                posts.forEach(post => {
+                    const title = post.title.$t;
+                    const content = post.content ? post.content.$t : post.summary.$t; 
+                    const publishDate = new Date(post.published.$t).toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+
+                    const postHTML = `
+                        <article style="background: white; padding: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #ED916A;">
+                            <h3 style="color: #043906; margin-top: 0; font-size: 1.5rem;">${title}</h3>
+                            <p style="color: #6789B0; font-size: 0.9rem; margin-bottom: 20px;">${publishDate}</p>
+                            <div style="color: #333; line-height: 1.6; overflow: hidden;">
+                                ${content}
+                            </div>
+                        </article>
+                    `;
+                    
+                    container.insertAdjacentHTML('beforeend', postHTML);
+                });
+
+            } catch (error) {
+                console.error('Error fetching blog posts:', error);
+                document.getElementById('blog-container').innerHTML = '<p style="text-align:center; color: red;">Failed to load the blog posts. Please try again later.</p>';
+            }
+        }
+        fetchBloggerPosts();
+    </script>
+</body>
+</html>
