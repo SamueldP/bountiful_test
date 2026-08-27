@@ -28,21 +28,39 @@
         /* Dropdown */
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: rgba(5, 51, 89, 0.95); min-width: 160px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; }
-        .dropdown-content a { padding: 15px 20px; display: block; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .dropdown-content a { padding: 15px 20px; display: block; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none;}
         .dropdown-content a:hover { background-color: var(--steel); }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* Animated Banner */
-        .banner { background-color: var(--coral); padding: 15px; text-align: center; font-weight: 700; letter-spacing: 4px; color: var(--navy); }
-        .animated-word { opacity: 0; animation: fadeInWord 8s infinite; }
-        .w1 { animation-delay: 0s; }
-        .w2 { animation-delay: 1.5s; }
-        .w3 { animation-delay: 3s; }
-        .w4 { animation-delay: 4.5s; }
-        @keyframes fadeInWord {
-            0%, 10% { opacity: 0; }
-            15%, 85% { opacity: 1; }
-            95%, 100% { opacity: 0; }
+        /* Single Word Rotating Banner */
+        .banner { 
+            background-color: var(--coral); 
+            height: 60px; 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            overflow: hidden;
+        }
+        .word-slide { 
+            position: absolute; 
+            font-weight: 700; 
+            letter-spacing: 4px; 
+            color: var(--navy);
+            font-size: 1.1rem;
+            opacity: 0; 
+            animation: cycleWord 8s infinite ease-in-out; 
+        }
+        /* Delay each word so they appear one after the other */
+        .word-slide:nth-child(1) { animation-delay: 0s; }
+        .word-slide:nth-child(2) { animation-delay: 2s; }
+        .word-slide:nth-child(3) { animation-delay: 4s; }
+        .word-slide:nth-child(4) { animation-delay: 6s; }
+
+        @keyframes cycleWord {
+            0%, 5% { opacity: 0; transform: translateY(15px); }
+            10%, 20% { opacity: 1; transform: translateY(0); }
+            25%, 100% { opacity: 0; transform: translateY(-15px); }
         }
 
         /* Container & Typography */
@@ -68,20 +86,83 @@
         .box-lightblue { background-color: var(--steel); }
         .box-navy { background-color: var(--navy); }
 
-        /* Bountiful Footer Block */
-        .bottom-block { display: flex; align-items: center; background: white; margin-bottom: 60px; position: relative; overflow: hidden; }
-        .bottom-image { width: 50%; min-height: 400px; background-image: url('images/index.jpg'); background-size: cover; background-position: center; }
-        .bottom-text { width: 50%; padding: 40px; position: relative; }
-        .bountiful-stack { font-size: 6rem; font-weight: 800; line-height: 0.85; color: var(--coral); position: absolute; left: -100px; top: 50%; transform: translateY(-50%); text-transform: uppercase; }
-        .bountiful-stack span { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        .script-overlay { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--coral); position: absolute; right: 50px; top: 50%; transform: translateY(-50%) rotate(-10deg); }
-        .stacked-values { position: absolute; bottom: 20px; right: 40px; font-weight: 800; font-size: 1.5rem; text-align: right; line-height: 1.1; letter-spacing: 2px; }
+        /* --- NEW PERFECT SPLIT FOOTER BLOCK --- */
+        .split-footer { 
+            display: flex; 
+            height: 450px; 
+            position: relative; 
+            margin-bottom: 60px; 
+            background: white; 
+        }
+        .footer-left { 
+            width: 50%; 
+            background-image: url('images/index.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+        .footer-right { 
+            width: 50%; 
+            position: relative; 
+        }
+        
+        /* The perfectly centered BOUNTIFUL grid */
+        .bountiful-grid {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 15px;
+            font-size: 7rem;
+            font-weight: 800;
+            line-height: 0.9;
+            z-index: 10;
+        }
+        .b-left { text-align: right; }
+        .b-right { text-align: left; }
+        
+        /* The specific text colors from her mockup */
+        .text-white { color: white; text-shadow: 2px 4px 15px rgba(0,0,0,0.15); }
+        .text-coral { color: var(--coral); }
+
+        /* Right side stacked values overlay */
+        .footer-overlay-container {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 5;
+        }
+        .footer-script {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--coral);
+            position: absolute;
+            right: 140px;
+            top: 40%;
+            transform: translateY(-50%) rotate(-10deg);
+            opacity: 0.7;
+        }
+        .footer-stacked-words {
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-align: right;
+            line-height: 1.2;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
         
         @media (max-width: 900px) {
-            .bottom-block { flex-direction: column; }
-            .bottom-image, .bottom-text { width: 100%; }
-            .bottom-text { min-height: 300px; }
-            .bountiful-stack { left: 20px; font-size: 4rem; }
+            .split-footer { flex-direction: column; height: auto; }
+            .footer-left { width: 100%; height: 300px; }
+            .footer-right { width: 100%; height: 300px; }
+            .bountiful-grid { font-size: 4rem; }
+            .footer-script { right: 80px; font-size: 3rem; }
         }
     </style>
 </head>
@@ -107,12 +188,12 @@
         </nav>
     </div>
 
-    <!-- Animated Banner -->
+    <!-- Rotating Banner -->
     <div class="banner">
-        <span class="animated-word w1">FAITH</span> - 
-        <span class="animated-word w2">FOOD</span> - 
-        <span class="animated-word w3">FAMILY</span> - 
-        <span class="animated-word w4">FELLOWSHIP</span>
+        <div class="word-slide">FAITH</div>
+        <div class="word-slide">FOOD</div>
+        <div class="word-slide">FAMILY</div>
+        <div class="word-slide">FELLOWSHIP</div>
     </div>
 
     <div class="container">
@@ -127,8 +208,7 @@
             <div class="image-wrapper">
                 <div class="bg-box-navy"></div>
                 <div class="bg-box-coral"></div>
-                <!-- Change to Timmy eating watermelon -->
-                <img src="images/DSC_1795copy.jpg" alt="Timmy eating watermelon">
+                <img src="images/timmy_watermelon.jpg" alt="Timmy eating watermelon">
             </div>
         </div>
 
@@ -148,21 +228,35 @@
             </div>
         </div>
 
-        <!-- Custom Bottom Block -->
-        <div class="bottom-block">
-            <!-- Ensure you save the bottom beach image as index_bottom.jpg in the images folder -->
-            <div class="bottom-image"></div>
-            <div class="bottom-text">
-                <div class="bountiful-stack">
-                    <span>B O</span><br><span>U N</span><br>T I<br>F U L
+        <!-- Split Footer Section -->
+        <div class="split-footer">
+            <div class="footer-left"></div>
+            <div class="footer-right">
+                <div class="footer-overlay-container">
+                    <div class="footer-script">blossoming</div>
+                    <div class="footer-stacked-words">
+                        <span style="color: var(--light-peach);">FAITH</span><br>
+                        <span style="color: var(--coral);">FOOD</span><br>
+                        <span style="color: var(--steel);">FAMILY</span><br>
+                        <span style="color: var(--navy);">FELLOWSHIP</span>
+                    </div>
                 </div>
-                <div class="script-overlay">blossoming</div>
-                <div class="stacked-values">
-                    <span style="color: var(--light-peach);">FAITH</span><br>
-                    <span style="color: var(--coral);">FOOD</span><br>
-                    <span style="color: var(--steel);">FAMILY</span><br>
-                    <span style="color: var(--navy);">FELLOWSHIP</span>
-                </div>
+            </div>
+            
+            <!-- Straddled text grid -->
+            <div class="bountiful-grid">
+                <!-- Row 1 -->
+                <div class="b-left text-white">B</div>
+                <div class="b-right text-white">O</div>
+                <!-- Row 2 -->
+                <div class="b-left text-white">U</div>
+                <div class="b-right text-white">N</div>
+                <!-- Row 3 -->
+                <div class="b-left text-white">T</div>
+                <div class="b-right text-white">I</div>
+                <!-- Row 4 (Coral) -->
+                <div class="b-left text-coral">F</div>
+                <div class="b-right text-coral">U L</div>
             </div>
         </div>
 
