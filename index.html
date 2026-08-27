@@ -3,106 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bountiful Blossoming</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <title>Home | Bountiful Blossoming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fafafa;
+        :root {
+            --light-peach: #F9E2C3;
+            --coral: #ED916A;
+            --navy: #053359;
+            --steel: #6789B0;
+            --bg-color: #FEF6F0;
+        }
+        
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--navy); overflow-x: hidden; }
+        
+        /* Nav & Hero */
+        .hero { position: relative; height: 100vh; background-image: url('images/DSC_0527.jpg'); background-size: cover; background-position: center; }
+        nav { position: absolute; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; box-sizing: border-box; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%); }
+        .logo { color: white; font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
+        .logo span { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: 2.2rem; margin-left: -10px; display: block; margin-top: -10px; text-transform: lowercase; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; transition: opacity 0.3s; text-transform: uppercase; }
+        .nav-links a:hover { opacity: 0.7; }
+        
+        /* Dropdown */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: rgba(5, 51, 89, 0.95); min-width: 160px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; }
+        .dropdown-content a { padding: 15px 20px; display: block; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .dropdown-content a:hover { background-color: var(--steel); }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Animated Banner */
+        .banner { background-color: var(--coral); padding: 15px; text-align: center; font-weight: 700; letter-spacing: 4px; color: var(--navy); }
+        .animated-word { opacity: 0; animation: fadeInWord 8s infinite; }
+        .w1 { animation-delay: 0s; }
+        .w2 { animation-delay: 1.5s; }
+        .w3 { animation-delay: 3s; }
+        .w4 { animation-delay: 4.5s; }
+        @keyframes fadeInWord {
+            0%, 10% { opacity: 0; }
+            15%, 85% { opacity: 1; }
+            95%, 100% { opacity: 0; }
         }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh; /* Full screen height */
-            background-size: cover;
-            background-position: center;
-        }
+        /* Container & Typography */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .script-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--navy); margin: 20px 0 60px 40px; font-weight: 400; }
+        
+        /* Intro Layout */
+        .intro-section { display: flex; justify-content: center; align-items: center; gap: 80px; margin-bottom: 80px; flex-wrap: wrap; }
+        .intro-text h3 { font-weight: 800; letter-spacing: 6px; font-size: 1.5rem; margin-bottom: 15px; }
+        .intro-text p { max-width: 250px; line-height: 1.6; font-size: 1.1rem; }
+        
+        /* Offset Image Styling */
+        .image-wrapper { position: relative; z-index: 2; margin-top: 40px; }
+        .image-wrapper img { width: 450px; max-width: 100%; position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .bg-box-coral { position: absolute; bottom: -40px; left: -40px; width: 80%; height: 80%; background-color: var(--coral); z-index: 1; }
+        .bg-box-navy { position: absolute; top: -40px; right: -40px; width: 70%; height: 70%; background-color: var(--navy); z-index: 0; }
 
-        /* Transparent Navigation Overlay */
-        nav {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            box-sizing: border-box;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
-        }
+        /* 3 Columns */
+        .three-col-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .col-box { padding: 50px 30px; color: white; text-align: center; line-height: 1.8; }
+        .col-box h4 { font-size: 1.1rem; letter-spacing: 5px; margin-top: 0; margin-bottom: 25px; line-height: 1.4; }
+        .box-orange { background-color: var(--coral); }
+        .box-lightblue { background-color: var(--steel); }
+        .box-navy { background-color: var(--navy); }
 
-        .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        /* Dropdown Styling */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #222;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            padding: 10px 0;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #444;
-        }
-
-        /* Show dropdown on hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
+        /* Bountiful Footer Block */
+        .bottom-block { display: flex; align-items: center; background: white; margin-bottom: 60px; position: relative; overflow: hidden; }
+        .bottom-image { width: 50%; min-height: 400px; background-image: url('images/index.jpg'); background-size: cover; background-position: center; }
+        .bottom-text { width: 50%; padding: 40px; position: relative; }
+        .bountiful-stack { font-size: 6rem; font-weight: 800; line-height: 0.85; color: var(--coral); position: absolute; left: -100px; top: 50%; transform: translateY(-50%); text-transform: uppercase; }
+        .bountiful-stack span { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .script-overlay { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--coral); position: absolute; right: 50px; top: 50%; transform: translateY(-50%) rotate(-10deg); }
+        .stacked-values { position: absolute; bottom: 20px; right: 40px; font-weight: 800; font-size: 1.5rem; text-align: right; line-height: 1.1; letter-spacing: 2px; }
+        
+        @media (max-width: 900px) {
+            .bottom-block { flex-direction: column; }
+            .bottom-image, .bottom-text { width: 100%; }
+            .bottom-text { min-height: 300px; }
+            .bountiful-stack { left: 20px; font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero" style="background-image: url('images/index.jpg');">
+    <!-- Hero Section -->
+    <div class="hero">
         <nav>
-            <div class="logo">Bountiful Blossoming</div>
+            <div class="logo">BOUNTIFUL<br><span>blossoming</span></div>
             <div class="nav-links">
                 <a href="index.html">HOME</a>
-                <a href="testimony.html">MY TESTIMONY</a>
+                <a href="testimony.html">TESTIMONIES</a>
                 <a href="blog.html">HEALTH BLOG</a>
-                
                 <div class="dropdown">
                     <a href="#">RESOURCES ⌄</a>
                     <div class="dropdown-content">
@@ -115,59 +107,65 @@
         </nav>
     </div>
 
-    <section id="blog-section" style="padding: 60px 20px; max-width: 900px; margin: 0 auto;">
-        <h2 style="text-align: center; color: #053359; font-size: 2rem; margin-bottom: 40px;">Latest Posts</h2>
+    <!-- Animated Banner -->
+    <div class="banner">
+        <span class="animated-word w1">FAITH</span> - 
+        <span class="animated-word w2">FOOD</span> - 
+        <span class="animated-word w3">FAMILY</span> - 
+        <span class="animated-word w4">FELLOWSHIP</span>
+    </div>
+
+    <div class="container">
         
-        <div id="blog-container">
-            <p style="text-align: center; color: #6789B0;">Loading latest posts...</p>
+        <!-- About Section -->
+        <h2 class="script-title">a little bit about me...</h2>
+        <div class="intro-section">
+            <div class="intro-text">
+                <h3>H E Y O !</h3>
+                <p>It's me, Timnah, but for many I go by the name of Timmy.</p>
+            </div>
+            <div class="image-wrapper">
+                <div class="bg-box-navy"></div>
+                <div class="bg-box-coral"></div>
+                <!-- Change to Timmy eating watermelon -->
+                <img src="images/DSC_1795 copy.jpg" alt="Timmy eating watermelon">
+            </div>
         </div>
-    </section>
 
-    <script>
-        // Your specific Blogger URL
-        const feedUrl = 'https://bountiful-test.blogspot.com/feeds/posts/default?alt=json';
+        <!-- 3 Columns -->
+        <div class="three-col-grid">
+            <div class="col-box box-orange">
+                <h4>WHERE IT<br>S T A R T E D</h4>
+                <p>I am from Cape Town, South Africa. That is where I grew up and that is my home but I also love to travel and experience and see the rest of the world God has put together and his people all over!</p>
+            </div>
+            <div class="col-box box-lightblue">
+                <h4>WHERE IT<br>S T A R T E D<br>A G A I N</h4>
+                <p>I grew up knowing God but accepted Jesus into my heart in 2021 - the greatest decision I have ever made and ever will make! Ever since then he has only continued to reveal himself to me and given me things that I want to share now with YOU! And that includes my health journey which really began in May of 2021.</p>
+            </div>
+            <div class="col-box box-navy">
+                <h4>WHERE I T ' S<br>A T</h4>
+                <p>I believe that he wants to reveal more and more of himself to each and every one of us so that we can become more like Jesus and one of the ways he does that is through one another. For we are created in his image and his Spirit now lives within those of us who have accepted the Gospel in Faith! My prayer is that this will be a place we can do that. Amen!</p>
+            </div>
+        </div>
 
-        async function fetchBloggerPosts() {
-            try {
-                const response = await fetch(feedUrl);
-                const data = await response.json();
-                const posts = data.feed.entry;
-                const container = document.getElementById('blog-container');
-                
-                container.innerHTML = ''; // Clear the loading text
+        <!-- Custom Bottom Block -->
+        <div class="bottom-block">
+            <!-- Ensure you save the bottom beach image as index_bottom.jpg in the images folder -->
+            <div class="bottom-image"></div>
+            <div class="bottom-text">
+                <div class="bountiful-stack">
+                    <span>B O</span><br><span>U N</span><br>T I<br>F U L
+                </div>
+                <div class="script-overlay">blossoming</div>
+                <div class="stacked-values">
+                    <span style="color: var(--light-peach);">FAITH</span><br>
+                    <span style="color: var(--coral);">FOOD</span><br>
+                    <span style="color: var(--steel);">FAMILY</span><br>
+                    <span style="color: var(--navy);">FELLOWSHIP</span>
+                </div>
+            </div>
+        </div>
 
-                if (!posts || posts.length === 0) {
-                    container.innerHTML = '<p style="text-align:center;">No posts found yet!</p>';
-                    return;
-                }
-
-                posts.forEach(post => {
-                    const title = post.title.$t;
-                    const content = post.content ? post.content.$t : post.summary.$t; 
-                    const publishDate = new Date(post.published.$t).toLocaleDateString('en-US', {
-                        year: 'numeric', month: 'long', day: 'numeric'
-                    });
-
-                    const postHTML = `
-                        <article style="background: white; padding: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #ED916A;">
-                            <h3 style="color: #043906; margin-top: 0; font-size: 1.5rem;">${title}</h3>
-                            <p style="color: #6789B0; font-size: 0.9rem; margin-bottom: 20px;">${publishDate}</p>
-                            <div style="color: #333; line-height: 1.6;">
-                                ${content}
-                            </div>
-                        </article>
-                    `;
-                    
-                    container.insertAdjacentHTML('beforeend', postHTML);
-                });
-
-            } catch (error) {
-                console.error('Error fetching blog posts:', error);
-                document.getElementById('blog-container').innerHTML = '<p style="text-align:center; color: red;">Failed to load the blog posts. Please try again later.</p>';
-            }
-        }
-
-        fetchBloggerPosts();
-    </script>
+    </div>
 </body>
 </html>
