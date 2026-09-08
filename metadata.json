@@ -1,0 +1,8 @@
+{
+  "name": "Bountiful Blossoming",
+  "description": "A health and wellness blog featuring testimonies, recipes, and resources.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

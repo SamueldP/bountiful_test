@@ -4,46 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes | Bountiful Blossoming</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #fafafa; }
-        .hero { position: relative; height: 60vh; background-size: cover; background-position: center; }
-        nav { position: absolute; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; box-sizing: border-box; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%); }
-        .logo { color: white; font-size: 1.5rem; font-weight: 600; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: opacity 0.3s; }
+        :root {
+            --light-peach: #F9E2C3;
+            --coral: #ED916A;
+            --navy: #053359;
+            --steel: #6789B0;
+            --bg-color: #FEF6F0;
+        }
+        
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--navy); overflow-x: hidden; }
+        
+        /* Nav */
+        nav { width: 100%; display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 40px; box-sizing: border-box; background: var(--bg-color); z-index: 10;}
+        .logo { margin-top: 10px; }
+        .logo img { height: 120px; object-fit: contain; filter: brightness(0); } /* Adjusted size for plain background */
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; margin-top: 30px; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; transition: opacity 0.3s; text-transform: uppercase; }
         .nav-links a:hover { opacity: 0.7; }
+        
+        /* Dropdown */
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: #222; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; padding: 10px 0; }
-        .dropdown-content a { color: white; padding: 12px 20px; text-decoration: none; display: block; text-align: left; }
-        .dropdown-content a:hover { background-color: #444; }
+        .dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: rgba(5, 51, 89, 0.95); min-width: 160px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; }
+        .dropdown-content a { padding: 15px 20px; display: block; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none;}
+        .dropdown-content a:hover { background-color: var(--steel); }
         .dropdown:hover .dropdown-content { display: block; }
-        .content { padding: 60px 20px; max-width: 900px; margin: 0 auto; }
-    </style>
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: 20px;
+            font-size: 3rem;
+            color: var(--navy);
+            margin: 40px 0 60px 0;
+            margin-right: -20px; /* Offset for center alignment with tracking */
+        }
+
+        /* Recipes Grid */
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 0 40px 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .recipe-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--navy);
+            transition: transform 0.3s ease;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .recipe-image {
+            width: 100%;
+            aspect-ratio: 1;
+            /* Placeholder background matching Canva's default */
+            background: linear-gradient(to bottom, #7CD3F8 0%, #E2F6CD 100%);
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        /* Adding rolling hills placeholder style */
+        .recipe-image::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: #99CC33;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            z-index: 1;
+        }
+        .recipe-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -10%;
+            width: 70%;
+            height: 30%;
+            background: #7CB30B;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            z-index: 2;
+        }
+
+        /* Cloud elements for the placeholder */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            z-index: 0;
+        }
+        .cloud-main {
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 30px;
+        }
+        .cloud-main::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        .cloud-main::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+
+        .recipe-title {
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: 5px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        @media (max-width: 900px) {
+            .recipes-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 600px) {
+            .recipes-grid { grid-template-columns: 1fr; }
+        }
+    
+        /* Single Word Banner */
+        .banner { 
+            background-color: var(--coral); 
+            height: 60px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 30px;
+            overflow: hidden;
+        }
+        .word-slide { 
+            font-weight: 700; 
+            letter-spacing: 4px; 
+            color: var(--navy);
+            font-size: 1.1rem;
+        }
+        .word-slide:nth-child(1) { animation: cycleW1 8s infinite; }
+        .word-slide:nth-child(2) { animation: cycleW2 8s infinite; }
+        .word-slide:nth-child(3) { animation: cycleW3 8s infinite; }
+        .word-slide:nth-child(4) { animation: cycleW4 8s infinite; }
+        @keyframes cycleW1 {
+            0%, 95% { opacity: 1; transform: translateX(0); }
+            96%, 100% { opacity: 0; transform: translateX(0); }
+        }
+        @keyframes cycleW2 {
+            0%, 24% { opacity: 0; transform: translateX(-10px); }
+            25%, 95% { opacity: 1; transform: translateX(0); }
+            96%, 100% { opacity: 0; transform: translateX(0); }
+        }
+        @keyframes cycleW3 {
+            0%, 49% { opacity: 0; transform: translateX(-10px); }
+            50%, 95% { opacity: 1; transform: translateX(0); }
+            96%, 100% { opacity: 0; transform: translateX(0); }
+        }
+        @keyframes cycleW4 {
+            0%, 74% { opacity: 0; transform: translateX(-10px); }
+            75%, 95% { opacity: 1; transform: translateX(0); }
+            96%, 100% { opacity: 0; transform: translateX(0); }
+        }
+</style>
 </head>
 <body>
-    <div class="hero" style="background-image: url('images/index.jpg');">
-        <nav>
-            <div class="logo">Bountiful Blossoming</div>
-            <div class="nav-links">
-                <a href="index.html">HOME</a>
-                <a href="testimony.html">MY TESTIMONY</a>
-                <a href="blog.html">HEALTH BLOG</a>
-                <div class="dropdown">
-                    <a href="#">RESOURCES ⌄</a>
-                    <div class="dropdown-content">
-                        <a href="recipes.html">RECIPES</a>
-                        <a href="aim.html">AIM</a>
-                        <a href="https://www.youtube.com/" target="_blank">YOUTUBE</a>
-                    </div>
+    <nav>
+        <div class="logo"><a href="index.html"><img src="images/BOUNTIFUL.png" alt="Bountiful Blossoming Logo"></a></div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="testimony.html">TESTIMONIES</a>
+            <a href="blog.html">HEALTH BLOG</a>
+            <div class="dropdown">
+                <a href="resources.html">RESOURCES ⌄</a>
+                <div class="dropdown-content">
+                    <a href="recipes.html">RECIPES</a>
+                    <a href="aim.html">AIM</a>
+                    <a href="https://www.youtube.com/" >YOUTUBE</a>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
+    <h1 class="page-title">R E C I P E S</h1>
+
+    <div id="blog-container" class="recipes-grid"></div>
+    <script>
+        function handleBloggerPosts(data) {
+            const container = document.getElementById('blog-container');
+            if (!container) return;
+            const posts = data.feed.entry;
+            
+            container.innerHTML = ''; 
+
+            if (!posts || posts.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1 / -1; text-align:center;">No posts found yet!</div>';
+                return;
+            }
+
+            try {
+                posts.forEach(post => {
+                    const title = post.title.$t;
+                    const content = post.content ? post.content.$t : (post.summary ? post.summary.$t : ''); 
+                    
+                    let link = '#';
+                    const postIdMatch = post.id.$t.match(/post-(\d+)/);
+                    if (postIdMatch) {
+                        link = `post.html?blog=recipes&id=${postIdMatch[1]}`;
+                    } else {
+                        const alternateLink = post.link.find(l => l.rel === 'alternate');
+                        if (alternateLink) link = alternateLink.href;
+                    }
+
+                    let imgHtml = '';
+                    const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+                    if (imgMatch) {
+                        imgHtml = `<div class="recipe-image" style="background-image: url('${imgMatch[1]}'); background-size: cover; background-position: center;"></div>`;
+                    } else {
+                        imgHtml = `<div class="recipe-image"><div class="cloud cloud-main"></div></div>`;
+                    }
+
+                    const postHTML = `
+                        <a href="${link}"  class="recipe-card">
+                            ${imgHtml}
+                            <h3 class="recipe-title">${title}</h3>
+                        </a>
+                    `;
+                    
+                    container.insertAdjacentHTML('beforeend', postHTML);
+                });
+            } catch (error) {
+                console.error("Error parsing posts:", error);
+                container.innerHTML = '<div style="grid-column: 1 / -1; text-align:center; color: red;">Error displaying posts.</div>';
+            }
+        }
+    </script>
     
-    <div class="content">
-        <h2 style="color: #053359; text-align: center;">Healthy Recipes</h2>
-        <p style="text-align: center; color: #6789B0;">Delicious and nutritious recipes coming soon.</p>
-    </div>
+
+
+    <script src="https://bountifulrecipestest.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBloggerPosts"></script>
 </body>
 </html>
