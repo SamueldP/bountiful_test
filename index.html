@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Bountiful Blossoming</title>
+    <link rel="icon" href="images/testimonies.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,7 +15,7 @@
             --bg-color: #FEF6F0;
         }
         
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--navy); overflow-x: hidden; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: white; color: var(--navy); overflow-x: hidden; }
         
         /* Nav & Hero */
         .hero { position: relative; height: 100vh; background-image: url('images/DSC_0527.jpg'); background-size: cover; background-position: center; }
@@ -43,15 +44,15 @@
             overflow: hidden;
         }
         .word-slide { 
-            font-weight: 700; 
-            letter-spacing: 4px; 
+            font-weight: 400; 
+            letter-spacing: 15px; 
             color: var(--navy);
             font-size: 1.1rem;
         }
-        .word-slide:nth-child(1) { animation: cycleW1 8s infinite; }
-        .word-slide:nth-child(2) { animation: cycleW2 8s infinite; }
-        .word-slide:nth-child(3) { animation: cycleW3 8s infinite; }
-        .word-slide:nth-child(4) { animation: cycleW4 8s infinite; }
+        .word-slide:nth-child(1) { animation: cycleW1 3s infinite; }
+        .word-slide:nth-child(2) { animation: cycleW2 3s infinite; }
+        .word-slide:nth-child(3) { animation: cycleW3 3s infinite; }
+        .word-slide:nth-child(4) { animation: cycleW4 3s infinite; }
 
         @keyframes cycleW1 {
             0%, 95% { opacity: 1; transform: translateX(0); }
@@ -79,18 +80,17 @@
         
         /* Intro Layout */
         .intro-section { display: flex; justify-content: center; align-items: center; gap: 80px; margin-bottom: 80px; flex-wrap: wrap; }
-        .intro-text h3 { font-weight: 800; letter-spacing: 6px; font-size: 1.5rem; margin-bottom: 15px; }
+        .intro-text h3 { font-weight: 400; letter-spacing: 6px; font-size: 1.5rem; margin-bottom: 15px; }
         .intro-text p { max-width: 250px; line-height: 1.6; font-size: 1.1rem; }
         
-        /* Offset Image Styling */
-        .image-wrapper { position: relative; z-index: 2; margin-top: 40px; }
-        .image-wrapper img { width: 450px; max-width: 100%; position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .bg-box-coral { position: absolute; bottom: -40px; left: -40px; width: 80%; height: 80%; background-color: var(--coral); z-index: 1; }
-        .bg-box-navy { position: absolute; top: -40px; right: -40px; width: 70%; height: 70%; background-color: var(--navy); z-index: 0; }
+        /* Image Styling with Wavy Overlay */
+        .image-wrapper { position: relative; z-index: 2; margin-top: 40px; border-radius: 12px; overflow: hidden; width: 450px; max-width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); aspect-ratio: 4/3; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; position: relative; z-index: 2; }
+        .waves-overlay { position: absolute; bottom: -2px; left: 0; width: 100%; height: 40%; z-index: 10; pointer-events: none; display: block; }
 
         /* 3 Columns */
-        .three-col-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .col-box { padding: 50px 30px; color: white; text-align: center; line-height: 1.8; }
+        .three-col-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 80px; align-items: stretch; }
+        .col-box { padding: 40px 30px; color: white; text-align: center; line-height: 1.8; height: 100%; box-sizing: border-box; }
         .col-box h4 { font-size: 1.1rem; letter-spacing: 5px; margin-top: 0; margin-bottom: 25px; line-height: 1.4; }
         .box-orange { background-color: var(--coral); }
         .box-lightblue { background-color: var(--steel); }
@@ -125,7 +125,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 0 15px;
             font-size: 7rem;
-            font-weight: 800;
+            font-weight: 400;
             line-height: 0.9;
             z-index: 10;
         }
@@ -158,7 +158,7 @@
             opacity: 0.7;
         }
         .footer-stacked-words {
-            font-weight: 800;
+            font-weight: 400;
             font-size: 1.5rem;
             text-align: right;
             line-height: 1.2;
@@ -168,20 +168,24 @@
         }
         
         @media (max-width: 900px) {
+            .three-col-grid { grid-template-columns: 1fr; }
             .split-footer { flex-direction: column; height: auto; }
             .footer-left { width: 100%; height: 300px; }
             .footer-right { width: 100%; height: 300px; }
             .bountiful-grid { font-size: 4rem; }
             .footer-script { right: 80px; font-size: 3rem; }
         }
-    </style>
+            .bg-white { background-color: white; }
+        .bg-cream { background-color: var(--bg-color); }
+        .col-wrapper { display: flex; flex-direction: column; height: 100%; }
+</style>
 </head>
 <body>
 
     <!-- Hero Section -->
     <div class="hero">
         <nav>
-            <div class="logo"><a href="index.html"><img src="images/BOUNTIFUL.png" alt="Bountiful Blossoming Logo"></a></div>
+            <div class="logo"><a href="index.html"><img src="images/testimonies.png" alt="Bountiful Blossoming Logo"></a></div>
             <div class="nav-links">
                 <a href="index.html">HOME</a>
                 <a href="testimony.html">TESTIMONIES</a>
@@ -209,32 +213,56 @@
     <div class="container">
         
         <!-- About Section -->
-        <h2 class="script-title">a little bit about me...</h2>
+    </div>
+    <div class="bg-cream" style="padding: 60px 0;">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+        <h2 class="script-title" style="margin-top: 0;">a little bit about me...</h2>
         <div class="intro-section">
             <div class="intro-text">
                 <h3>H E Y O !</h3>
                 <p>It's me, Timnah, but for many I go by the name of Timmy.</p>
             </div>
             <div class="image-wrapper">
-                <div class="bg-box-navy"></div>
-                <div class="bg-box-coral"></div>
                 <img src="images/timmy_watermelon.jpg" alt="Timmy eating watermelon">
+                <svg class="waves-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <!-- Steel -->
+                    <path d="M0,50 C30,20 60,80 100,60 L100,105 L0,105 Z" fill="var(--steel)"></path>
+                    <!-- White -->
+                    <path d="M50,105 C70,60 90,60 100,85 L100,105 Z" fill="var(--bg-color)"></path>
+                    <!-- Navy -->
+                    <path d="M0,75 C30,45 60,115 100,80 L100,105 L0,105 Z" fill="var(--navy)"></path>
+                    <!-- Coral -->
+                    <path d="M0,100 C15,80 35,80 50,105 L0,105 Z" fill="var(--coral)"></path>
+                </svg>
             </div>
         </div>
 
+        </div>
+    </div>
+    <div class="container">
         <!-- 3 Columns -->
         <div class="three-col-grid">
-            <div class="col-box box-orange">
-                <h4>WHERE IT<br>S T A R T E D</h4>
-                <p>I am from Cape Town, South Africa. That is where I grew up and that is my home but I also love to travel and experience and see the rest of the world God has put together and his people all over!</p>
+            <div class="col-wrapper">
+                <div style="color: var(--navy); font-weight: 800; letter-spacing: 5px; font-size: 1.1rem; text-align: center; margin-bottom: 15px;">WHERE IT</div>
+                <div class="col-box box-orange" style="border-radius: 8px;">
+                    <h4>S T A R T E D</h4>
+                    <p style="text-align: center; margin-bottom: 0;">I grew up loving food, eating anything and everything and my health concerns were not more than the concerns of most other people around me. That started to change when I was in my early teens and began struggling with hormonal acne which not only had its physical strains but mental and emotional too. It soon became so severe that I was willing to do whatever it would take to make it go away.</p>
+                </div>
             </div>
-            <div class="col-box box-lightblue">
-                <h4>WHERE IT<br>S T A R T E D<br>A G A I N</h4>
-                <p>I grew up knowing God but accepted Jesus into my heart in 2021 - the greatest decision I have ever made and ever will make! Ever since then he has only continued to reveal himself to me and given me things that I want to share now with YOU! And that includes my health journey which really began in May of 2021.</p>
+            <div class="col-wrapper">
+                <div style="color: var(--navy); font-weight: 800; letter-spacing: 5px; font-size: 1.1rem; text-align: center; margin-bottom: 15px;">WHERE IT</div>
+                <div class="col-box box-lightblue" style="border-radius: 8px;">
+                    <h4>S T A R T E D<br>A G A I N</h4>
+                    <p style="text-align: center; margin-bottom: 0;">After resorting to medication and trying everything that I could try in my own strength without success, I cried out do God and he put my wellness coach - Michelle Pearson - on my path who helped me wean off the medication and just by changing my diet and lifestyle, my skin healed and problems I didn't even know were not normal came right too!</p>
+                </div>
             </div>
-            <div class="col-box box-navy">
-                <h4>WHERE I T ' S<br>A T</h4>
-                <p>I believe that he wants to reveal more and more of himself to each and every one of us so that we can become more like Jesus and one of the ways he does that is through one another. For we are created in his image and his Spirit now lives within those of us who have accepted the Gospel in Faith! My prayer is that this will be a place we can do that. Amen!</p>
+            <div class="col-wrapper">
+                <div style="color: var(--navy); font-weight: 800; letter-spacing: 5px; font-size: 1.1rem; text-align: center; margin-bottom: 15px;">WHERE I T ' S</div>
+                <div class="col-box box-navy" style="border-radius: 30px 10px 25px 15px / 15px 30px 10px 25px; box-shadow: -4px 4px 10px rgba(0,0,0,0.05); position: relative;">
+
+                    <h4>A T</h4>
+                    <p style="text-align: center; margin-bottom: 0;">I believe that he wants to reveal more and more of himself to each and every one of us so that we can become more like Jesus and one of the ways he does that is through one another. For we are created in his image and his Spirit now lives within those of us who have accepted the Gospel in Faith! My prayer is that this will be a place we can do that. Amen!</p>
+                </div>
             </div>
         </div>
 

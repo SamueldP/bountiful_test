@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Blog | Bountiful Blossoming</title>
+    <link rel="icon" href="images/testimonies.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,14 +15,14 @@
             --bg-color: #FEF6F0;
         }
         
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--navy); overflow-x: hidden; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: white; color: var(--navy); overflow-x: hidden; }
         
         /* Nav & Hero */
         .hero { position: relative; height: 100vh; background-image: url('images/DSC_0476.JPG'); background-size: cover; background-position: center; }
         nav { position: absolute; top: 0; width: 100%; display: flex; justify-content: flex-end; align-items: flex-start; padding: 20px 40px; box-sizing: border-box; background: transparent; z-index: 10;}
         
         .nav-links { display: flex; gap: 30px; align-items: center; margin-top: 20px; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; transition: opacity 0.3s; text-transform: uppercase; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 400; letter-spacing: 2px; transition: opacity 0.3s; text-transform: uppercase; }
         .nav-links a:hover { opacity: 0.7; }
         
         /* Dropdown */
@@ -48,7 +49,7 @@
             padding: 20px 0;
             text-align: center;
             color: var(--navy);
-            font-weight: 700; 
+            font-weight: 400; 
             letter-spacing: 8px; 
             font-size: 1.1rem;
         }
@@ -77,71 +78,19 @@
         .recipe-image {
             width: 100%;
             aspect-ratio: 1;
-            background: linear-gradient(to bottom, #7CD3F8 0%, #E2F6CD 100%);
+            background-image: url('images/DSC_0527.jpg');
+            background-size: cover;
+            background-position: right center;
             position: relative;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-bottom: 20px;
             overflow: hidden;
-        }
-        .recipe-image::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-            background: #99CC33;
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-            z-index: 1;
-        }
-        .recipe-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: -10%;
-            width: 70%;
-            height: 30%;
-            background: #7CB30B;
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-            z-index: 2;
-        }
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
-            z-index: 0;
-        }
-        .cloud-main {
-            top: 25%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 30px;
-        }
-        .cloud-main::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 15px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-        }
-        .cloud-main::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
+            border-radius: 8px;
         }
         
         .recipe-title {
             text-align: center;
-            font-weight: 800;
+            font-weight: 400;
             letter-spacing: 3px;
             font-size: 1.1rem;
             text-transform: uppercase;
@@ -168,15 +117,15 @@
             overflow: hidden;
         }
         .word-slide { 
-            font-weight: 700; 
-            letter-spacing: 4px; 
+            font-weight: 400; 
+            letter-spacing: 15px; 
             color: var(--navy);
             font-size: 1.1rem;
         }
-        .word-slide:nth-child(1) { animation: cycleW1 8s infinite; }
-        .word-slide:nth-child(2) { animation: cycleW2 8s infinite; }
-        .word-slide:nth-child(3) { animation: cycleW3 8s infinite; }
-        .word-slide:nth-child(4) { animation: cycleW4 8s infinite; }
+        .word-slide:nth-child(1) { animation: cycleW1 3s infinite; }
+        .word-slide:nth-child(2) { animation: cycleW2 3s infinite; }
+        .word-slide:nth-child(3) { animation: cycleW3 3s infinite; }
+        .word-slide:nth-child(4) { animation: cycleW4 3s infinite; }
         @keyframes cycleW1 {
             0%, 95% { opacity: 1; transform: translateX(0); }
             96%, 100% { opacity: 0; transform: translateX(0); }
@@ -262,6 +211,8 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
         }
+        .bg-white { background-color: white; }
+        .bg-cream { background-color: var(--bg-color); }
 </style>
 </head>
 <body>
@@ -328,7 +279,7 @@
                     if (imgMatch) {
                         imgHtml = `<div class="recipe-image" style="background-image: url('${imgMatch[1]}'); background-size: cover; background-position: center;"></div>`;
                     } else {
-                        imgHtml = `<div class="recipe-image"><div class="cloud cloud-main"></div></div>`;
+                        imgHtml = `<div class="recipe-image"></div>`;
                     }
 
                     const postHTML = `

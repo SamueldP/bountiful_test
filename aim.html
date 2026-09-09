@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIM | Bountiful Blossoming</title>
+    <link rel="icon" href="images/testimonies.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,7 +15,7 @@
             --bg-color: #FEF6F0;
         }
         
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--navy); overflow-x: hidden; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: white; color: var(--navy); overflow-x: hidden; }
         
         /* Nav */
         nav { width: 100%; display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 40px; box-sizing: border-box; background: var(--bg-color); z-index: 10;}
@@ -22,7 +23,7 @@
         .logo img { height: 120px; object-fit: contain; filter: brightness(0); }
         
         .nav-links { display: flex; gap: 30px; align-items: center; margin-top: 30px; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; transition: opacity 0.3s; text-transform: uppercase; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 400; letter-spacing: 2px; transition: opacity 0.3s; text-transform: uppercase; }
         .nav-links a:hover { opacity: 0.7; }
         
         /* Dropdown */
@@ -35,8 +36,8 @@
         /* Page Title */
         .page-title {
             text-align: center;
-            font-weight: 800;
-            letter-spacing: 20px;
+            font-weight: 400;
+            letter-spacing: 15px;
             font-size: 3rem;
             color: var(--navy);
             margin: 40px 0 60px 0;
@@ -60,8 +61,8 @@
 
         .aim-card-label {
             color: var(--navy);
-            font-weight: 800;
-            letter-spacing: 10px;
+            font-weight: 400;
+            letter-spacing: 15px;
             font-size: 1.2rem;
             margin-bottom: 5px;
             padding-left: 10px;
@@ -84,7 +85,7 @@
         }
 
         .aim-card-title {
-            font-weight: 800;
+            font-weight: 400;
             letter-spacing: 8px;
             font-size: 1.2rem;
             text-transform: uppercase;
@@ -94,7 +95,7 @@
         }
 
         .aim-content-bold {
-            font-weight: 800;
+            font-weight: 400;
             font-size: 1.1rem;
             text-align: center;
             margin-bottom: 20px;
@@ -106,6 +107,42 @@
             line-height: 1.8;
             font-size: 1rem;
             margin: 0;
+        }
+        
+                /* New AIM Intro */
+        .store-link-container {
+            text-align: center;
+            margin: 0 auto 60px auto;
+            max-width: 800px;
+        }
+        .store-link {
+            display: inline-block;
+            background-color: var(--bg-color); /* Cream color */
+            color: var(--navy);
+            text-decoration: none;
+            padding: 25px 40px;
+            border-radius: 12px;
+            letter-spacing: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .store-link:hover {
+            opacity: 0.8;
+        }
+        .store-link strong {
+            font-weight: 800;
+        }
+        .card-navy {
+            background-color: var(--navy);
+        }
+        .aim-intro-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px 60px 60px;
         }
         
         @media (max-width: 900px) {
@@ -124,15 +161,15 @@
             overflow: hidden;
         }
         .word-slide { 
-            font-weight: 700; 
-            letter-spacing: 4px; 
+            font-weight: 400; 
+            letter-spacing: 15px; 
             color: var(--navy);
             font-size: 1.1rem;
         }
-        .word-slide:nth-child(1) { animation: cycleW1 8s infinite; }
-        .word-slide:nth-child(2) { animation: cycleW2 8s infinite; }
-        .word-slide:nth-child(3) { animation: cycleW3 8s infinite; }
-        .word-slide:nth-child(4) { animation: cycleW4 8s infinite; }
+        .word-slide:nth-child(1) { animation: cycleW1 3s infinite; }
+        .word-slide:nth-child(2) { animation: cycleW2 3s infinite; }
+        .word-slide:nth-child(3) { animation: cycleW3 3s infinite; }
+        .word-slide:nth-child(4) { animation: cycleW4 3s infinite; }
         @keyframes cycleW1 {
             0%, 95% { opacity: 1; transform: translateX(0); }
             96%, 100% { opacity: 0; transform: translateX(0); }
@@ -152,11 +189,13 @@
             75%, 95% { opacity: 1; transform: translateX(0); }
             96%, 100% { opacity: 0; transform: translateX(0); }
         }
+        .bg-white { background-color: white; }
+        .bg-cream { background-color: var(--bg-color); }
 </style>
 </head>
 <body>
     <nav>
-        <div class="logo"><a href="index.html"><img src="images/BOUNTIFUL.png" alt="Bountiful Blossoming Logo"></a></div>
+        <div class="logo"><a href="index.html"><img src="images/testimonies.png" alt="Bountiful Blossoming Logo"></a></div>
         <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="testimony.html">TESTIMONIES</a>
@@ -172,14 +211,31 @@
         </div>
     </nav>
 
-    <h1 class="page-title">A I M</h1>
-
+        <h1 class="page-title">A I M</h1>
+    
+    <div class="aim-intro-section">
+        <div class="store-link-container">
+            <a href="https://myaimstore.com/bountifulblossoming/" target="_blank" class="store-link">
+                CLICK <strong>HERE</strong> FOR MY AIM STORE
+            </a>
+        </div>
+        
+        <div style="border: 2px solid var(--navy); padding: 8px; display: flex; flex-direction: column; background: white;">
+            <div style="color: var(--navy); font-weight: 800; letter-spacing: 15px; font-size: 1.2rem; padding: 10px 15px 5px 15px; background: white;">M Y</div>
+            <div class="aim-card card-navy" style="margin-bottom: 0; padding-top: 15px;">
+                <h4 style="text-align: left; font-size: 1.2rem; letter-spacing: 15px; margin-top: 0; margin-bottom: 25px; line-height: 1.4; font-weight: 800;">J O U R N E Y  W I T H  A I M</h4>
+                <p style="text-align: left; line-height: 1.8; font-size: 1rem; margin: 0;">
+                    I was blessed to have been told about Aim when I started making lifestyle changes. While I did make some pretty big changes immediately, adjusting to a lifestyle that included more fresh whole-foods was not so easy at first. That's where I found Aim's wholefood natural supplements helped me the most. To get the good stuff in to kickstart the healing while allowing my body time to learn to enjoy food as it was originally meant to be enjoyed. While I can now easily eat raw fruits and veggies for breakfast, lunch and dinner I still use and am so grateful for Aim because life isn't always perfect...whether traveling, under stress, or being exposed to harmful things in our environment, our bodies can easily be depleted of nutrients and the balance disrupted. It's also not always possible to buy fresh, organic produce and get everything we need from our food in today's life. Aim has helped me there too and in more instances than one. HORMONES, DIGESTION, IMMUNITY and even PARASITES! Aim has just made things easier for me and seeing the benefits from these concentrated wholefoods in my own life and others' has only made me that much more in Awe of God who created these healing foods in the first place!
+                </p>
+            </div>
+        </div>
+    </div>
+    
     <div class="aim-grid">
         <!-- Essentials Card -->
         <div class="aim-card-wrapper">
-            <div class="aim-card-label">M Y</div>
             <div class="aim-card card-blue">
-                <h3 class="aim-card-title">ESSENTIALS</h3>
+                <h4 style="text-align: center; font-size: 1.1rem; letter-spacing: 15px; margin-top: 0; margin-bottom: 25px; line-height: 1.4;">M Y<br>E S S E N T I A L S</h4>
                 <div class="aim-content-bold">Barley Life and Aimega</div>
                 <p class="aim-content-text">
                     I haven't been without these two since the beginning. While we can and should get everything we need from what we eat, our nourishment can still take strain from the environments we live in and the lives we live. Pollutants, stress, chemicals, unnatural foods all compromise our health and thats why I am so grateful for these 2 products to help me cover my bases no matter what life looks like in this season or the next.
@@ -189,9 +245,8 @@
 
         <!-- Other Go Tos Card -->
         <div class="aim-card-wrapper">
-            <div class="aim-card-label">M Y</div>
             <div class="aim-card card-orange">
-                <h3 class="aim-card-title">OTHER GO TOS</h3>
+                <h4 style="text-align: center; font-size: 1.1rem; letter-spacing: 15px; margin-top: 0; margin-bottom: 25px; line-height: 1.4;">O T H E R<br>G O  T O S</h4>
                 <div class="aim-content-bold">Para 90, Herbal Fibre blend, Flora Food, Peak Endurance</div>
                 <p class="aim-content-text">
                     Whether I am going into a malaria zone, need a gut reset or wanting some extra physical endurance in fitness or life in general, the above are my go to's that I can trust.
